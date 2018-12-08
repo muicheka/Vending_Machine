@@ -33,15 +33,15 @@ class VendingMachineTest(unittest.TestCase):
         returned_coins = self.machine.return_coins()
         self.assertTrue(self.machine.get_current_value() == 0)
 
-    # def test_sufficient_money(self):
-    #     self.machine.insert_coin(Coin.DOLLAR)
-    #     self.machine.insert_coin(Coin.QUARTER)
-    #     self.assertTrue(self.machine.vend_item(Item.B))
-    #     self.assertTrue(self.machine.get_current_value() == 0)
+    def test_sufficient_money(self):
+        self.machine.insert_coin(Coin.DOLLAR)
+        self.machine.insert_coin(Coin.QUARTER)
+        self.assertTrue(self.machine.vend_item(Item.B))
+        self.assertTrue(self.machine.get_current_value() == 0)
 
-    # def test_insufficient_money(self):
-    #     self.machine.insert_coin(Coin.DOLLAR)
-    #     self.assertFalse(self.machine.vend_item(Item.B))
+    def test_insufficient_money(self):
+          self.machine.insert_coin(Coin.DOLLAR)
+          self.assertFalse(self.machine.vend_item(Item.B))
 
     def test_excessive_money(self):
         self.machine.insert_coin(Coin.DOLLAR)
