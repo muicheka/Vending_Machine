@@ -12,6 +12,7 @@ class Item(IntEnum):
     A = 100
     B = 125
     C = 150
+    D = 145
 
 
 class VendingMachine:
@@ -50,9 +51,16 @@ class VendingMachine:
         temp = self.get_current_value()
         self.inserted_coins.clear()
         temp -= item
-        if temp % 25 == 0:
-            quarters = temp / 25
-            quarters = int(round(quarters))
-            for coin in range(quarters):
-                change.append(Coin.QUARTER)
-            return change
+        while temp != 0:
+            if temp == 0:
+                break
+            elif temp % 25 == 0:
+                quarters = temp / 25
+                quarters = int(round(quarters))
+                for coin in range(quarters):
+                    temp -= Coin.QUARTER
+                    change.append(Coin.QUARTER)
+            elif temp % 5 == 0:
+                temp -= Coin.NICKEL
+                change.append(Coin.NICKEL)
+        return change
